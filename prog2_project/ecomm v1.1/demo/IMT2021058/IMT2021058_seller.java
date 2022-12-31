@@ -24,6 +24,7 @@ public class IMT2021058_seller extends ecomm.Seller {
 	public void addPlatform(Platform thePlatform)
     {
         this.platfs.add(thePlatform);
+		thePlatform.addSeller(this);
     }
 	
 	// Seller to return listing of Products of specified Category

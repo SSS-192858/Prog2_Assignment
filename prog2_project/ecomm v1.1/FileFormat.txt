@@ -14,7 +14,7 @@ a requestID (single word) as the second token, followed by one of the below
     where ProductID was the value sent by the Seller earlier
     
 Thus, a typical line in the file would be:
-<PortalID> <RequestID> List Book
+<PortalID> <RequestID> List Book 
 or
 <PortalID> <RequestID> Buy seller1-book1 3
 or

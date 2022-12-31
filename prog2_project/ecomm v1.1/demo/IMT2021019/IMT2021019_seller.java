@@ -18,6 +18,7 @@ public class IMT2021019_seller extends Seller{
 	// Should in turn add itself to the Platform (with addSeller)
 	public void addPlatform(Platform thePlatform){
         platforms.add(thePlatform);
+        thePlatform.addSeller(this);
     };
 	
 	// Seller to return listing of Products of specified Category
@@ -55,6 +56,5 @@ public class IMT2021019_seller extends Seller{
 	public void AddProd(Product obj){
 		this.productsOffered.add(obj);
 	}
-
     
 }

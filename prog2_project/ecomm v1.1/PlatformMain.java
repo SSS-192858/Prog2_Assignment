@@ -1,12 +1,15 @@
-import demo.DemoPlatform;
-import ecomm.Platform;
-import ecomm.Seller;
+// import demo.DemoPlatform;
+// import ecomm.Platform;
+// import ecomm.Seller;
+import demo.*;
 
 public class PlatformMain {
 
 	public static void main(String[] args) {
 
-		Platform pf = new DemoPlatform();  // replace with appropriate derived class
+		EcommPlatform pf = new EcommPlatform();
+		pf.processRequests();
+		  // replace with appropriate derived class
 		
 		// create a number of sellers (of different sub-types of Seller)
 		// Assign a name (sellerID) to each of them.
