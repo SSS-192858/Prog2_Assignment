@@ -8,15 +8,15 @@ using namespace std;
 class Product
 {
     private:
-    string category, name, productId;
+    string category, name; //productId;
     float price;
     int quantity;
 
     public:
-    Product(string cat, string name, string productId, float price, int quantity);
+    Product(string cat, string name,float price, int quantity);
     string getCategory();
 	string getName();
-	string getProductID();
+	// string getProductID();
 	float getPrice();
 	int getQuantity();
 	void setQuantity(int decrease);

@@ -1,13 +1,14 @@
 // import demo.DemoPlatform;
 // import ecomm.Platform;
 // import ecomm.Seller;
-import demo.*;
+
 
 public class PlatformMain {
 
 	public static void main(String[] args) {
 
 		EcommPlatform pf = new EcommPlatform();
+
 		pf.processRequests();
 		  // replace with appropriate derived class
 		
@@ -34,7 +35,8 @@ public class PlatformMain {
 		// invoke 
 			pf.processRequests();
 		*/
-			
 	}
+
+	
 
 }
