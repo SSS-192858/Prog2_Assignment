@@ -8,11 +8,8 @@ public class IMT2021028_seller extends Seller{
     private ArrayList<Product> productsOffered;
     private ArrayList<Platform> platforms;
 
-    private String sellername;
-    
     public IMT2021028_seller(String id){
         super(id);
-        this.sellername = "Sankalp";
     }
 
     public void addPlatform(Platform thePlatform){

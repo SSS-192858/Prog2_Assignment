@@ -5,13 +5,12 @@ import ecomm.*;
 
 public class IMT2021019_seller extends Seller{
 
-    private String sellername;
+
     private ArrayList<Product> productsOffered;
     private ArrayList<Platform> platforms;
 
     public IMT2021019_seller(String id){
         super(id);
-        this.sellername = "Siddharth";
     }
 	
 	// Platform it is being added to.

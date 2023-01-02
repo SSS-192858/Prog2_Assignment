@@ -9,6 +9,10 @@ public abstract class Product {
 	public abstract float getPrice();
 	public abstract int getQuantity();
 	public abstract void setQuantity(int decrease);
+
+	public String toString(){
+		return this.getName()+" "+this.getProductID()+" "+this.getPrice()+" "+this.getQuantity();
+	}
 }
 
 

@@ -32,7 +32,7 @@ Portal1::Portal1()
 void Portal1::processUserCommand(string command)
 {
     ofstream fwrite;
-    fwrite.open("PortalToPlatform.txt");
+    fwrite.open("PortalToPlatform.txt",ios::app);
     string sortorder;
     int count = 0;
     bool flg = false;

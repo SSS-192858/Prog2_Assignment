@@ -1,8 +1,8 @@
 package demo;
-
+import ecomm.*;
 import ecomm.Globals;
 
-public class Book {
+public class Book extends Product{
     private Globals.Category category;
     private String name;
     private String productId;

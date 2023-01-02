@@ -9,7 +9,8 @@ public class Mobile extends ecomm.Product{
     private String id;
     private float price;
     private int quantity;
-    
+    // product id will contain the Seller id plus it's name.
+
     public Mobile(String name,String id,float price, int quantity)
     {
         this.cat = Globals.Category.Mobile;

@@ -7,16 +7,15 @@ public class IMT2021058_seller extends ecomm.Seller {
 
     private ArrayList<Product> Prod_Offrs;
     private String myID;
-	private String sellername;
+	// private String sellername;
     private ArrayList<Platform> platfs;
 
 	// id is passed in by the class that instantiates sub-type of seller
 	public IMT2021058_seller(String id) 
     {
-		super(id);
-		this.sellername = "Srini";
+		super(id);	
 	}
-	// ID of seller. 
+	// ID of seller.  
 	public String getID() { return myID;}
 	
 	// Platform it is being added to.
