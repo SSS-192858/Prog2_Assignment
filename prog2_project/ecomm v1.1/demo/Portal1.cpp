@@ -25,36 +25,46 @@ class ProductCompare{
         }
 
 };
-Portal1::Portal1()
+Portal1::Portal1(string id):Portal(id)
 {
+    
 }
 
 void Portal1::processUserCommand(string command)
 {
     ofstream fwrite;
     fwrite.open("PortalToPlatform.txt",ios::app);
-    string sortorder;
-    int count = 0;
-    bool flg = false;
-    for(int i=0;i<command.size();i++)
-    {
-        if(command[i]==' '&&count!=1)
+    if(command[0]=='L'){
+        string sortorder;
+        int count = 0;
+        bool flg = false;
+        for(int i=0;i<command.size();i++)
         {
-            count++;
+            if(command[i]==' '&&count!=1)
+            {
+                count++;
+            }
+        else if(count==1 && command[i]==' ')
+            {
+                flg = true;
+            }
+            if(flg)
+            {
+                sortorder+=command[i];
+            }
         }
-       else if(count==1 && command[i]==' ')
-        {
-            flg = true;
-        }
-        if(flg)
-        {
-            sortorder+=command[i];
-        }
+        size_t ind = command.find(sortorder);
+        command.erase(ind);
+        sortorder.erase(0,1);
+        this->reqid_sortod[this->Req_Id] = sortorder; 
+        fwrite << this->PortalID<<" "<<this->Req_Id<<" "<<command;
+        
     }
-    size_t ind = command.find(sortorder);
-    command.erase(ind);
-    this->reqid_sortod[this->Req_Id++] = sortorder; 
-    fwrite << command;
+    else
+    {
+        fwrite << this->PortalID<<" "<<this->Req_Id<<" "<<command;
+    }
+    this->Req_Id++;
     // check for the SortOrder.
     fwrite <<"/n";
     fwrite.close();
@@ -68,6 +78,8 @@ void Portal1::Response()
     ifstream readFile ("PlatformToPortal.txt");
     // Use a while loop together with the getline() function to read the file line by line
     vector<vector<string>>inputs;
+    vector<int> requestsCompleted;
+
     while (getline(readFile, myText)) {
         // Output the text from the file
         // string reqid;
@@ -91,6 +103,8 @@ void Portal1::Response()
             }
         }
         inputs.push_back(a);
+
+        
         for(auto it:this->reqid_sortod)
         {
             for(int i=0;i<inputs.size();i++)
@@ -108,10 +122,15 @@ void Portal1::Response()
             }
             cout<<endl;
             p.clear();
+            requestsCompleted.push_back(it.first);
         }
-    }
 
+    }
     readFile.close();
+
+    for (int i=0; i<requestsCompleted.size(); i++){
+        this->reqid_sortod.erase(requestsCompleted[i]);
+    }
 }
 
 

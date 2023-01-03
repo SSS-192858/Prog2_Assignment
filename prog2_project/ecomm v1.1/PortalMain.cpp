@@ -3,7 +3,7 @@ using namespace std;
 # include "Portal1.h"
 int main()
 {
-    Portal1 *p1 = new Portal1();
+    Portal1 *p1 = new Portal1("portal1");
     string s;
     getline(cin,s);
     string a1 = ""; // this will be used for appending each char of a continuous string(continous string->string with no spaces)
@@ -27,18 +27,17 @@ int main()
                 a.push_back(a1);
             }
         }
-        if(a[0]=="List")
+        if(a[0]=="List" || a[0]=="Buy" || a[0]=="Start")
         {
-            
-        }
-        else if(a[0]=="Buy")
-        {
-
+            p1->processUserCommand(s);
         }
         else if(a[0]=="Check")
         {
-
+            p1->Response();
+        }else if (a[0] == "End"){
+            break;
         }
     }
 
+    return 0;
 }

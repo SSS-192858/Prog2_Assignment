@@ -6,7 +6,9 @@ class Portal{
     protected:
         map<int,string> reqid_sortod;
         static int Req_Id;
+        string PortalID;
     public:
+        Portal(string id);
         virtual void processUserCommand(string command) = 0;
         virtual void Response()=0;
 };

@@ -5,6 +5,7 @@
 using namespace std;
 class Portal1:public Portal{
     public:
+        Portal1(string id);
         void processUserCommand(string command);
         void Response();
                 

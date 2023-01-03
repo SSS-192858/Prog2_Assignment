@@ -31,12 +31,24 @@ public class PlatformMain {
 		siddharth.AddProd(sid_book2);
 
 		IMT2021028_seller sankalp = new IMT2021028_seller("Sankalp");
+		Book sank_book1 = new Book("Macbeth", "Sankalp-Macbeth", 500, 15);
+		Mobile sank_Mobile1 = new Mobile("iPhone13", "Sankalp-iPhone13", 100000, 10);
+		Book sank_book2 = new Book("Ikigai", "Sankalp-Ikigai", 400, 26);
+		Book sank_book3 = new Book("NCERT_Chem", "Sankalp-NCRET_Chem", 180, 50);
+		sankalp.AddProd(sank_Mobile1);
+		sankalp.AddProd(sank_book1);
+		sankalp.AddProd(sank_book2);
+		sankalp.AddProd(sank_book3);
+
+		sankalp.addPlatform(pf);
+		siddharth.addPlatform(pf);
+		srini.addPlatform(pf);
 
 		while (true){
 			String s = sc.next();
 			if (s.equals("Check")){
 				pf.processRequests();
-			}else{
+			}else if (s.equals("End")){
 				break;
 			}
 		}
