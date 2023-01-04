@@ -1,6 +1,0 @@
-portal1 1 List Book
-portal1 2 List Mobile
-portal1 3 Start
-portal1 4 Buy Siddharth-A71 1
-portal1 5 List Book
-portal1 6 List Mobile

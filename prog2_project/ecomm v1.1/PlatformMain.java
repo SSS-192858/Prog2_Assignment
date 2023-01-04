@@ -1,9 +1,9 @@
 import demo.*;
-import ecomm.*;
 import demo.IMT2021019.*;
 import demo.IMT2021028.*;
 import demo.IMT2021058.*;
 import java.util.*;
+import java.io.*;
 
 public class PlatformMain {
 
@@ -48,6 +48,7 @@ public class PlatformMain {
 			String s = sc.next();
 			if (s.equals("Check")){
 				pf.processRequests();
+				clearFile();
 			}else if (s.equals("End")){
 				break;
 			}
@@ -81,6 +82,16 @@ public class PlatformMain {
 		*/
 	}
 
-	
+	public static void clearFile(){
+		File file = new File("./demo/PortalToPlatform.txt");
+		try {
+			PrintWriter write = new PrintWriter(file);
+			write.print("");
+			write.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}	
 
 }

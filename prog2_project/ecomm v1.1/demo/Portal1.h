@@ -81,14 +81,16 @@ class Portal1:public Portal{
             list<Product*>p;
             string myText;
             // Read from the text file
-            ifstream readFile ("PlatformToPortal.txt");
+            ifstream readFile ("./demo/PlatformToPortal.txt");
             // Use a while loop together with the getline() function to read the file line by line
             vector<vector<string>>inputs;
             vector<int> requestsCompleted;
+            // cout<<"Initialisations done"<<endl;
 
             while (getline(readFile, myText)) {
                 // Output the text from the file
                 // string reqid;
+                // cout<<myText<<endl;
                 string a1 = ""; // this will be used for appending each char of a continuous string(continous string->string with no spaces)
                 vector<string>a; // this is the vector<string>a that will contain the first string as name of the object and second one the number specified(if any like that of FlightSimple)
                 for(int i=0;i<myText.size();i++)
@@ -109,37 +111,55 @@ class Portal1:public Portal{
                     }
                 }
                 inputs.push_back(a);
+            }
 
-                
-                for(auto it:this->reqid_sortod)
-                {
+            int minReqId = stoi(inputs[0][1]);
+            int maxReqId = stoi(inputs[inputs.size()-1][1]);
+
+            for (int it=minReqId; it<=maxReqId; it++){
+                if (this->reqid_sortod.find(it) != this->reqid_sortod.end()){
                     for(int i=0;i<inputs.size();i++)
                     {
-                        if(stoi(inputs[i][1])==it.first)
+                        // cout<<stoi(inputs[i][1])<<" "<<it.first<<endl;
+                        if(stoi(inputs[i][1])==it)
                         {
-                                Product *p1 = new Product(inputs[i][3],inputs[i][2],stof(inputs[i][4]),stoi(inputs[i][5]));
-                                p.push_back(p1);
+                            Product *p1 = new Product(inputs[i][3],inputs[i][2],stof(inputs[i][4]),stoi(inputs[i][5]));
+                            p.push_back(p1);
                         }
                     }
-                    p.sort(ProductCompare(it.second));
-                    for(auto it:p)
-                    {
-                        cout<<it->getName()<<" ";// actual printing order to be seen;
-                    }
-                    cout<<endl;
-                    p.clear();
-                    requestsCompleted.push_back(it.first);
-                }
+                    p.sort(ProductCompare(this->reqid_sortod[it]));
+                
 
+                    for(auto it1:p)
+                    {
+                        cout<<this->PortalID<<" "<<it<<" "<<it1->getName()<<" "<<it1->getCategory()<<" "<<it1->getPrice()<<" "<<it1->getQuantity()<<endl;
+                    }
+                    p.clear();
+                    requestsCompleted.push_back(it);
+
+                }else{
+                    for (int i=0; i<inputs.size(); i++){
+                        if (it == stoi(inputs[i][1])){
+                            for (int j=0; j<inputs[i].size(); j++){
+                                cout<<inputs[i][j]<<" ";
+                            }
+                            cout<<endl;
+                            break;
+                        }
+                    }
+                }
             }
+
             readFile.close();
 
+            ofstream fwrite;
+            fwrite.open("./demo/PlatformToPortal.txt");
+            fwrite <<"";
+            fwrite.close();
             for (int i=0; i<requestsCompleted.size(); i++){
                 this->reqid_sortod.erase(requestsCompleted[i]);
             }
         }
 };
-
-
 
 #endif
