@@ -6,8 +6,8 @@ import ecomm.*;
 public class IMT2021019_seller extends Seller{
 
 
-    private ArrayList<Product> productsOffered;
-    private ArrayList<Platform> platforms;
+    private ArrayList<Product> productsOffered = new ArrayList<Product>();
+    private ArrayList<Platform> platforms = new ArrayList<Platform>();
 
     public IMT2021019_seller(String id){
         super(id);

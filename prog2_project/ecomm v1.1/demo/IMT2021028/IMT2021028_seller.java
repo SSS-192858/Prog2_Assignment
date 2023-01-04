@@ -5,8 +5,8 @@ import java.util.*;
 
 public class IMT2021028_seller extends Seller{
 
-    private ArrayList<Product> productsOffered;
-    private ArrayList<Platform> platforms;
+    private ArrayList<Product> productsOffered = new ArrayList<Product>();
+    private ArrayList<Platform> platforms = new ArrayList<Platform>();
 
     public IMT2021028_seller(String id){
         super(id);
@@ -32,25 +32,17 @@ public class IMT2021028_seller extends Seller{
 	// Return true if transaction succeeds, false otherwise. 
 	// Transaction fails if incorrect productID or quantity exceeds available inventory
 	public boolean buyProduct(String productID, int quantity){
-        boolean transactionStatus = false;
-        int i1=0;
-        for(int i=0;i<productsOffered.size();i++){
-            if (productID == productsOffered.get(i).getProductID()){
-                transactionStatus = true;
-                i1=i;
-                break;
+        for (int i=0; i<productsOffered.size(); i++){
+            if (productsOffered.get(i).getProductID().equals(productID)){
+                if (productsOffered.get(i).getQuantity() >= quantity){
+                    productsOffered.get(i).setQuantity(quantity);
+                    return true;
+                }else{
+                    return false;
+                }   
             }
         }
-
-        if (transactionStatus){
-            if (quantity>productsOffered.get(i1).getQuantity()){
-                transactionStatus = false;
-            }else{
-                transactionStatus = true;
-                productsOffered.get(i1).setQuantity(quantity);
-            }
-        }
-        return transactionStatus;
+        return false;
     };
 
     public void AddProd(Product obj){

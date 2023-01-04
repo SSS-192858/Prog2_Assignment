@@ -1,15 +1,18 @@
 # include <bits/stdc++.h>
+# include "./demo/Portal1.h"
 using namespace std;
-# include "Portal1.h"
+
 int main()
 {
     Portal1 *p1 = new Portal1("portal1");
-    string s;
-    getline(cin,s);
-    string a1 = ""; // this will be used for appending each char of a continuous string(continous string->string with no spaces)
-    vector<string>a; // this is the vector<string>a that will contain the first string as name of the object and second one the number specified(if any like that of FlightSimple)
+    
+    // this is the vector<string>a that will contain the first string as name of the object and second one the number specified(if any like that of FlightSimple)
     while(true)
     {
+        string s;
+        getline(cin,s);
+        string a1 = ""; // this will be used for appending each char of a continuous string(continous string->string with no spaces)
+        vector<string>a;
         for(int i=0;i<s.size();i++)
         {
             if(s[i]!=' '&& i!=(int)s.size()-1)
@@ -26,17 +29,21 @@ int main()
                 a1+=s[i];
                 a.push_back(a1);
             }
+            
         }
+
         if(a[0]=="List" || a[0]=="Buy" || a[0]=="Start")
         {
             p1->processUserCommand(s);
         }
-        else if(a[0]=="Check")
+        else if(s=="Check")
         {
             p1->Response();
-        }else if (a[0] == "End"){
+        }
+        else if (s == "End"){
             break;
         }
+        
     }
 
     return 0;

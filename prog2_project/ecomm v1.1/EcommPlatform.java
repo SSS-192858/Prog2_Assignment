@@ -6,7 +6,7 @@ public class EcommPlatform extends Platform {
 
 	ArrayList<Seller> listSellers = new ArrayList<Seller>();
 
-
+	
 	@Override
 	public boolean addSeller(Seller aSeller) {
 		listSellers.add(aSeller);
@@ -25,14 +25,14 @@ public class EcommPlatform extends Platform {
 				if (query[3].equals("Book")){
 					
 					for (int j=0; j<listSellers.size(); j++){
-						ArrayList<Product> temp = listSellers.get(i).findProducts(Globals.Category.Book);
+						ArrayList<Product> temp = listSellers.get(j).findProducts(Globals.Category.Book);
 						result.addAll(temp);
 					}
 
 				}else if (query[3].equals("Mobile")){
 
 					for (int j=0; j<listSellers.size(); j++){
-						ArrayList<Product> temp = listSellers.get(i).findProducts(Globals.Category.Mobile);
+						ArrayList<Product> temp = listSellers.get(j).findProducts(Globals.Category.Mobile);
 						result.addAll(temp);
 					}
 				}
@@ -42,20 +42,27 @@ public class EcommPlatform extends Platform {
 			}
 			else if(query[2].equals("Buy"))
 			{
+				String [] id = query[3].split("-");
+				
 				for(int j=0;j<listSellers.size();j++)
-				{
-					if(query[3].contains(this.listSellers.get(i).getID()))
+				{	
+					// System.out.println(this.listSellers.get(j).getID());
+					if(this.listSellers.get(j).getID().equals(id[0]))
 					{
-						if(this.listSellers.get(i).buyProduct(query[3],Integer.parseInt(query[4])))
+						// System.out.println("Hee");
+						if(this.listSellers.get(j).buyProduct(query[3],Integer.parseInt(query[4])))
 						{
 							writeForBack(query[0],query[1],"Success");
 						}
 						else
 						{
 							writeForBack(query[0],query[1],"Failure");
+							
 						}
+						break;
 					}
 				}	
+				// System.out.println("Hi");
 			}
 			else
 			{
@@ -116,9 +123,8 @@ public class EcommPlatform extends Platform {
 		}catch (IOException e){
 			e.printStackTrace();
 		}
-				
 	}
-
+	
 	public static void writeStart(String portalId, String requestId){
 		File file = new File("./demo/PlatformToPortal.txt");
 		try{

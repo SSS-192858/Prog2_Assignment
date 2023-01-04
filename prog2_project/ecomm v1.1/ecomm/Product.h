@@ -13,13 +13,27 @@ class Product
     int quantity;
 
     public:
-    Product(string cat, string name,float price, int quantity);
-    string getCategory();
-	string getName();
+    Product(string cat, string name,float price, int quantity){
+        this->category = cat;
+        this->name = name;
+        this->price = price;
+        this-> quantity = quantity;
+    }
+
+    string getCategory(){
+        return this->category;
+    }
+	string getName(){
+        return this->name;
+    }
 	// string getProductID();
-	float getPrice();
-	int getQuantity();
-	void setQuantity(int decrease);
+	float getPrice(){
+        return this->price;
+    }
+
+	int getQuantity(){
+        return this->quantity;
+    }
 };
 
 #endif
