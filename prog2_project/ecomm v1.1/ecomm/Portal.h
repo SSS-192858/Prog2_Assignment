@@ -8,14 +8,9 @@ class Portal{
         static int Req_Id;
         string PortalID;
     public:
-        Portal(string id){
-            this->PortalID = id;
-        }
-
+        Portal(string id);
         virtual void processUserCommand(string command) = 0;
         virtual void Response()=0;
 };
-
-int Portal::Req_Id = 1;
 
 #endif

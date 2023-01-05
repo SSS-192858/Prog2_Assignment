@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    Portal1 *p1 = new Portal1("portal1");
+    Portal1 *p1 = new Portal1("portal2");
     
     // this is the vector<string>a that will contain the first string as name of the object and second one the number specified(if any like that of FlightSimple)
     while(true)
