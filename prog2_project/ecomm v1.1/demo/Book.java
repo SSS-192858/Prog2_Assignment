@@ -41,6 +41,9 @@ public class Book extends Product{
     public void setQuantity(int decrease){
         this.quantity = this.quantity - decrease;
     }
-
+    
+	public String toString(){
+		return this.getName()+" "+this.getProductID()+" "+this.getPrice()+" "+this.getQuantity();
+	}
     
 }

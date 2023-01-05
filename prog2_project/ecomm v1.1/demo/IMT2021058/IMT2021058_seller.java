@@ -2,7 +2,7 @@ package demo.IMT2021058;
 
 import java.util.ArrayList;
 import ecomm.*;
-
+import demo.*;
 public class IMT2021058_seller extends Seller {
 
     private ArrayList<Product> Prod_Offrs = new ArrayList<Product>();
@@ -48,7 +48,18 @@ public class IMT2021058_seller extends Seller {
 			if(this.Prod_Offrs.get(i).getProductID().equals(productID)){ 
 				if(this.Prod_Offrs.get(i).getQuantity()>=quantity)
 				{
-					this.Prod_Offrs.get(i).setQuantity(quantity);
+					if(this.Prod_Offrs.get(i).getCategory()==Globals.Category.Book)
+					{
+						Book b1 = (Book)this.Prod_Offrs.get(i);
+						b1.setQuantity(quantity);
+						this.Prod_Offrs.add(i,b1);
+					}
+					else
+					{
+						Mobile m1 = (Mobile)this.Prod_Offrs.get(i);
+						m1.setQuantity(quantity);
+						this.Prod_Offrs.add(i,m1);
+					}
 					return true;
 				}else{
 					return false;

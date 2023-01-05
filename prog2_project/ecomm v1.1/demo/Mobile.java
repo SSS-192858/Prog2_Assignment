@@ -44,4 +44,8 @@ public class Mobile extends ecomm.Product{
         this.quantity-=dec;
     }
     
+	public String toString(){
+		return this.getName()+" "+this.getProductID()+" "+this.getPrice()+" "+this.getQuantity();
+	}
+    
 }

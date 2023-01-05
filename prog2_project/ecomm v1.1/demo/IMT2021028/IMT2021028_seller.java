@@ -1,5 +1,6 @@
 package demo.IMT2021028;
 
+import demo.*;
 import ecomm.*;
 import java.util.*;
 
@@ -35,7 +36,16 @@ public class IMT2021028_seller extends Seller{
         for (int i=0; i<productsOffered.size(); i++){
             if (productsOffered.get(i).getProductID().equals(productID)){
                 if (productsOffered.get(i).getQuantity() >= quantity){
-                    productsOffered.get(i).setQuantity(quantity);
+                    if (productsOffered.get(i).getCategory().equals(Globals.Category.Book)){
+                        Book book = (Book)productsOffered.get(i);
+                        book.setQuantity(quantity);
+                        productsOffered.add(i, book);
+                    } 
+                    else{
+                        Mobile mobile = (Mobile)productsOffered.get(i);
+                        mobile.setQuantity(quantity);
+                        productsOffered.add(i, mobile);
+                    }
                     return true;
                 }else{
                     return false;
