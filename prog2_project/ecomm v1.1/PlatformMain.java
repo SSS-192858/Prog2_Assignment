@@ -9,9 +9,12 @@ public class PlatformMain {
 
 	public static void main(String[] args) {
 
+		//the platform object
 		EcommPlatform pf = new EcommPlatform();
 		Scanner sc = new Scanner(System.in);
 
+		//Initialising sellers and products
+		//-------------------------------------------------------------------------------------------------------------------
 		IMT2021058_seller srini = new IMT2021058_seller("Srini");
 		Book srini_book1 = new Book("Invisible_Man", "Srini-Invisible_Man", 350, 25);
 		Book srini_book2 = new Book("Othello", "Srini-Othello", 500, 20);
@@ -39,7 +42,8 @@ public class PlatformMain {
 		sankalp.AddProd(sank_book1);
 		sankalp.AddProd(sank_book2);
 		sankalp.AddProd(sank_book3);
-
+		//----------------------------------------------------------------------------------------------------------------------------
+		//adding them to the platform
 		sankalp.addPlatform(pf);
 		siddharth.addPlatform(pf);
 		srini.addPlatform(pf);
@@ -47,9 +51,11 @@ public class PlatformMain {
 		while (true){
 			String s = sc.next();
 			if (s.equals("Check")){
+				//if check is called, we process the requests and then remove from the file
 				pf.processRequests();
 				clearFile();
 			}else if (s.equals("End")){
+				//otherwise we exit the program
 				break;
 			}
 		}
@@ -82,9 +88,11 @@ public class PlatformMain {
 		*/
 	}
 
+	//to clear of all the requests, as now we they have been processed
 	public static void clearFile(){
 		File file = new File("./demo/PortalToPlatform.txt");
 		try {
+			//to clear the file, we just open the file in overwrite mode, and then write an empty string 
 			PrintWriter write = new PrintWriter(file);
 			write.print("");
 			write.close();

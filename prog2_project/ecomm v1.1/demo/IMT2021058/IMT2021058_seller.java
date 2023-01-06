@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import ecomm.*;
 import demo.*;
 public class IMT2021058_seller extends Seller {
-
+	// Array lists storing the products offered by the seller, and the platforms he sells them on
     private ArrayList<Product> Prod_Offrs = new ArrayList<Product>();
-	// private String sellername;
     private ArrayList<Platform> platfs = new ArrayList<Platform>();
 
 	// id is passed in by the class that instantiates sub-type of seller
@@ -48,6 +47,9 @@ public class IMT2021058_seller extends Seller {
 			if(this.Prod_Offrs.get(i).getProductID().equals(productID)){ 
 				if(this.Prod_Offrs.get(i).getQuantity()>=quantity)
 				{
+					// we will downcast because parent class product did not have a method to
+                    // decrease the quantoty, hence we downcast the product, set quantity after selling
+                    // and again add it at the original index in the array list
 					if(this.Prod_Offrs.get(i).getCategory()==Globals.Category.Book)
 					{
 						Book b1 = (Book)this.Prod_Offrs.get(i);
@@ -68,6 +70,7 @@ public class IMT2021058_seller extends Seller {
 		}
 		return false;
 	}
+	//add product to the list of products offered
 	public void AddProd(Product obj)
 	{
 		this.Prod_Offrs.add(obj);
