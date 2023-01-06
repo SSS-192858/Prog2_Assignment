@@ -117,6 +117,9 @@ void Portal1::Response(){
     //inputs now contains the correct requests, with the correct portal ids
 
     //obtaining the max and min request ids to be processed
+    if(inputs.size()==0){
+        return;
+    }
     int minReqId = stoi(inputs[0][1]);
     int maxReqId = stoi(inputs[inputs.size()-1][1]);
 
